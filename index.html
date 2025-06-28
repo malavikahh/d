@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Classifier</title>
+    <style>
+        body {
+            background-color: #ffe6f0; /* baby pink */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            color: #333;
+        }
+        h1 {
+            color: #d63384; /* dark pink */
+        }
+        input[type="file"] {
+            padding: 10px;
+            background-color: #fff;
+            border: 2px solid #d63384;
+            border-radius: 8px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #d63384;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: #c2185b;
+        }
+        img {
+            margin-top: 20px;
+            border: 4px solid #d63384;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Black & White vs Color Image Classifier</h1>
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" required><br><br>
+        <input type="submit" value="Upload & Predict">
+    </form>
+
+    {% if result %}
+        <h2>Prediction: <span style="color:green">{{ result }}</span></h2>
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" height="300">
+    {% endif %}
+</body>
+</html>

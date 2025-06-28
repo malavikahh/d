@@ -34,7 +34,7 @@ def predict():
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
 
-    result = "Black & White" if is_bw(filepath) else "Color"
+    result = "Black & White image" if is_bw(filepath) else "Color image"
     return render_template('index.html', filename=file.filename, result=result)
 
 @app.route('/display/<filename>')
